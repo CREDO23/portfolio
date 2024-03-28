@@ -5,7 +5,6 @@ import Footer from "@/components/layouts/Footer";
 import { useState } from "react";
 import Home1 from "@/components/main/Home";
 import About from "@/components/main/About";
-import News from "@/components/main/news";
 import Projects from "@/components/main/projects";
 
 export default function Home() {
