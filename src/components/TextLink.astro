@@ -4,13 +4,20 @@ interface Props {
   /** "↓" marks a download. */
   marker?: "↗" | "↓";
   download?: boolean;
+  /** On its own line, e.g. after a List: taller hit area, as wide as its label. */
+  standalone?: boolean;
 }
 
-const { href, marker = "↗", download = false } = Astro.props;
+const {
+  href,
+  marker = "↗",
+  download = false,
+  standalone = false,
+} = Astro.props;
 ---
 
 {href && (
-  <a href={href} download={download}>
+  <a class:list={[{ standalone }]} href={href} download={download}>
     <slot />
     {/* Astro drops whitespace between tags, so the separator space is in the string. */}
     <span class="marker" aria-hidden="true">
@@ -28,5 +35,11 @@ const { href, marker = "↗", download = false } = Astro.props;
   a:hover,
   .marker {
     color: var(--color-accent);
+  }
+
+  /* Sized to its label in a flex column instead of stretching across it. */
+  .standalone {
+    align-self: flex-start;
+    padding: var(--space-1-5) 0;
   }
 </style>

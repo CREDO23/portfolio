@@ -5,9 +5,18 @@ interface Props {
   role?: string;
   meta?: string;
   description?: string;
+  /** Centres the aside (e.g. a Pill) on the title line instead of the baseline. */
+  centerAside?: boolean;
 }
 
-const { title, href, role, meta, description } = Astro.props;
+const {
+  title,
+  href,
+  role,
+  meta,
+  description,
+  centerAside = false,
+} = Astro.props;
 // Linked and plain Rows share one markup; only the wrapping element changes.
 const Content = href ? "a" : "div";
 ---
@@ -17,7 +26,7 @@ const Content = href ? "a" : "div";
     class:list={["content", { "has-description": description }]}
     href={href}
   >
-    <div class="line">
+    <div class:list={["line", { "center-aside": centerAside }]}>
       {/* Astro drops whitespace between tags, so each separator space is in the string. */}
       <span>
         <span class="title">{title}</span>
@@ -62,6 +71,10 @@ const Content = href ? "a" : "div";
     justify-content: space-between;
     align-items: baseline;
     gap: var(--space-1) var(--space-4);
+  }
+
+  .center-aside {
+    align-items: center;
   }
 
   .title {
