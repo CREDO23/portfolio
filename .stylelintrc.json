@@ -1,0 +1,33 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-html/astro"],
+  "rules": {
+    "color-no-hex": true,
+    "color-named": "never",
+    "function-disallowed-list": [
+      "rgb",
+      "rgba",
+      "hsl",
+      "hsla",
+      "hwb",
+      "lab",
+      "lch",
+      "oklab",
+      "oklch"
+    ],
+    "unit-disallowed-list": ["px", "rem", "em"],
+    "declaration-property-value-allowed-list": {
+      "/^font(-family|-size|-weight)?$/": ["/^var\\(/", "inherit"],
+      "/^(line-height|letter-spacing)$/": ["/^var\\(/", "inherit"]
+    }
+  },
+  "overrides": [
+    {
+      "files": ["src/styles/tokens.css"],
+      "rules": {
+        "color-no-hex": null,
+        "unit-disallowed-list": null,
+        "declaration-property-value-allowed-list": null
+      }
+    }
+  ]
+}
