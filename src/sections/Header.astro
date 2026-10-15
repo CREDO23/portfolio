@@ -10,6 +10,8 @@ const navSections = (await getCollection("sections"))
   .map((entry) => entry.data)
   .filter((section) => section.nav)
   .sort(byFileOrder);
+const navLinks = navSections.filter((section) => !section.navPill);
+const navPills = navSections.filter((section) => section.navPill);
 ---
 
 <header>
@@ -20,40 +22,47 @@ const navSections = (await getCollection("sections"))
     </span>
   </a>
   <nav aria-label={labels.mainNav}>
-    {navSections.map((section) =>
-      section.navPill ? (
-        <span class="nav-pill">
-          <Pill href={`#${section.id}`}>{section.nav}</Pill>
-        </span>
-      ) : (
-        <a class="nav-link" href={`#${section.id}`}>
-          {section.nav}
-        </a>
-      ),
-    )}
+    {navLinks.map((section) => (
+      <a class="nav-link" href={`#${section.id}`}>
+        {section.nav}
+      </a>
+    ))}
   </nav>
+  {/* Outside <nav> so it can keep the top row when the nav wraps below. */}
+  <span class="nav-pill">
+    {navPills.map((section) => (
+      <Pill href={`#${section.id}`}>{section.nav}</Pill>
+    ))}
+  </span>
 </header>
 
 <style>
+  /* Logo | space | nav | Contact. tokens.css moves the nav to its own row
+     on narrow screens through --header-nav-area. */
   header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto minmax(var(--space-6), 1fr) auto auto;
     align-items: center;
-    gap: var(--space-3) var(--space-6);
+    row-gap: var(--space-3);
   }
 
   .logo {
+    grid-area: 1 / 1;
     color: inherit;
     font-weight: var(--weight-medium);
     text-decoration: none;
   }
 
+  /* The negative margin lines the first link's text up with the logo when
+     the nav has its own row; it changes nothing when the nav sits at the end. */
   nav {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: var(--space-1);
+    grid-area: var(--header-nav-area);
+    justify-self: start;
+    margin-left: calc(-1 * var(--space-2-5));
     color: var(--color-muted);
   }
 
@@ -69,9 +78,11 @@ const navSections = (await getCollection("sections"))
     color: var(--color-accent);
   }
 
-  /* The Pill inherits its text colour, so the Header sets it here. */
+  /* 12px from the last nav link, as when the Pill sat inside the nav.
+     The Pill inherits its text colour, so the Header sets it here. */
   .nav-pill {
-    margin-left: var(--space-2);
+    grid-area: 1 / -2;
+    margin-left: var(--space-3);
     color: var(--color-fg);
   }
 </style>
