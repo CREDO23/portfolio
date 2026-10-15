@@ -10,6 +10,10 @@ updates:
         update-types:
           - minor
           - patch
+    ignore:
+      # @astrojs/check only supports TypeScript 5 and 6; remove once it supports 7.
+      - dependency-name: typescript
+        versions: [">=7"]
 
   - package-ecosystem: github-actions
     directory: /
