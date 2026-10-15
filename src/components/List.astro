@@ -1,0 +1,17 @@
+---
+// No props: Rows go in the default slot.
+interface Props {}
+---
+
+<ul>
+  <slot />
+</ul>
+
+<style>
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-bottom: var(--border);
+  }
+</style>
