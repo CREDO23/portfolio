@@ -8,6 +8,9 @@ const nonEmpty = z.string().min(1);
 const link = z.url();
 // "" marks a link that is not ready yet; components hide what it would render.
 const linkOrPlaceholder = z.union([link, z.literal("")]);
+// A file served from public/, e.g. "/thierry-bakera-cv.pdf". A single leading
+// slash: "//host/x" would point to another site.
+const publicFile = z.string().regex(/^\/[^/]/);
 const year = z.number().int();
 
 // `end: null` means ongoing ("now").
@@ -54,7 +57,10 @@ const site = defineCollection({
     email: z.email(),
     location: nonEmpty,
     availability: nonEmpty,
-    cvUrl: linkOrPlaceholder,
+    cvUrl: z.union([publicFile, linkOrPlaceholder], {
+      error:
+        'must be a file in public/ like /cv.pdf, a full URL, or "" while not ready',
+    }),
     linkedinUrl: link,
     blogUrl: link,
   }),
