@@ -1,5 +1,5 @@
 import { defineCollection } from "astro:content";
-import { file } from "astro/loaders";
+import { file, glob } from "astro/loaders";
 import { z } from "astro/zod";
 
 // Shared shapes: declared once, composed into collections with .extend().
@@ -67,8 +67,14 @@ const sections = listCollection(
   }),
 );
 
+const intro = defineCollection({
+  loader: glob({ pattern: "intro.md", base: "./src/content/markdown" }),
+  schema: z.object({ headline: nonEmpty }),
+});
+
 export const collections = {
   site,
   labels,
   sections,
+  intro,
 };
