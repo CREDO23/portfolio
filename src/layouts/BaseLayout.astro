@@ -1,0 +1,68 @@
+---
+import { Font } from "astro:assets";
+import { getEntry } from "astro:content";
+import "../styles/tokens.css";
+import "../styles/base.css";
+
+const site = await getEntry("site", "site");
+if (!site) {
+  throw new Error(
+    'Missing site metadata: add an entry with id "site" to src/content/site.json.',
+  );
+}
+const { name, description, lang } = site.data;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{name}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={name} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {/* Only the sans font is preloaded: it sets the body text. */}
+    <Font cssVariable="--font-geist" preload />
+    <Font cssVariable="--font-geist-mono" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
+    <div class="page">
+      <slot name="header" />
+      <main id="main">
+        <slot />
+      </main>
+      <slot name="footer" />
+    </div>
+  </body>
+</html>
+
+<style>
+  .page {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: var(--space-14) var(--space-6) var(--space-24);
+  }
+
+  /* Moved off-screen, not clipped: the 1px clip technique needs a raw px value. */
+  .skip-link {
+    position: absolute;
+    top: var(--space-2);
+    left: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-bg);
+    color: var(--color-fg);
+    transform: translateY(-200%);
+  }
+
+  .skip-link:focus {
+    transform: none;
+  }
+</style>
