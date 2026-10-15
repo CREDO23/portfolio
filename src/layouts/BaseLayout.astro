@@ -13,7 +13,13 @@ const { noindex = false } = Astro.props;
 const site = await getEntry("site", "site");
 if (!site) {
   throw new Error(
-    'Missing site metadata: add an entry with id "site" to src/content/site.json.',
+    'Missing site metadata: add an entry with id "site" to src/content/json/site.json.',
+  );
+}
+const labels = await getEntry("labels", "labels");
+if (!labels) {
+  throw new Error(
+    'Missing UI labels: add an entry with id "labels" to src/content/json/labels.json.',
   );
 }
 const { name, description, lang } = site.data;
@@ -39,7 +45,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
   </head>
   <body>
     <a class="skip-link" href="#main">
-      Skip to content
+      {labels.data.skipToContent}
     </a>
     <div class="page">
       <slot name="header" />
