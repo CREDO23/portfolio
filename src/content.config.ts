@@ -47,6 +47,8 @@ const site = defineCollection({
   loader: file("src/content/json/site.json"),
   schema: z.object({
     name: nonEmpty,
+    // The meta description and the Intro headline. Search results show
+    // about 155 characters; anything longer gets cut off there.
     description: nonEmpty,
     lang: nonEmpty,
     email: z.email(),
@@ -84,7 +86,8 @@ const sections = listCollection(
 
 const intro = defineCollection({
   loader: glob({ pattern: "intro.md", base: "./src/content/markdown" }),
-  schema: z.object({ headline: nonEmpty }),
+  // No frontmatter: the headline is site.description, kept in one place.
+  schema: z.strictObject({}),
 });
 
 // Built from `period` so its end >= start check carries over:
