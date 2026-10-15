@@ -35,7 +35,7 @@ Applies to every new file.
 | `src/layouts/`          | The single page layout: head, meta, fonts, skip link.                                     |
 | `src/content/`          | Data in `json/` and `markdown/`, schemas in `src/content.config.ts`, code at its root.    |
 | `src/styles/tokens.css` | Every design token. The only file allowed raw values.                                     |
-| `public/`               | Files served as-is: favicon, CV PDF.                                                      |
+| `public/`               | Files served as-is: favicon, CV PDF, social preview image.                                |
 
 ## Design system
 

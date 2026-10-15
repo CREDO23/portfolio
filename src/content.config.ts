@@ -10,7 +10,9 @@ const link = z.url();
 const linkOrPlaceholder = z.union([link, z.literal("")]);
 // A file served from public/, e.g. "/thierry-bakera-cv.pdf". A single leading
 // slash: "//host/x" would point to another site.
-const publicFile = z.string().regex(/^\/[^/]/);
+const publicFile = z
+  .string()
+  .regex(/^\/[^/]/, "must be a file in public/, like /file.pdf");
 const year = z.number().int();
 
 // `end: null` means ongoing ("now").
@@ -61,6 +63,9 @@ const site = defineCollection({
       error:
         'must be a file in public/ like /cv.pdf, a full URL, or "" while not ready',
     }),
+    // Social preview: 1200×630, the size BaseLayout declares to crawlers.
+    ogImage: publicFile,
+    ogImageAlt: nonEmpty,
     linkedinUrl: link,
     blogUrl: link,
   }),

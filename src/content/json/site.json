@@ -9,6 +9,8 @@
     "availability": "Open to full-time roles and contracts",
     "cvUrl": "/thierry-bakera-cv.pdf",
     "linkedinUrl": "https://www.linkedin.com/in/thierrybakera",
-    "blogUrl": "https://bakerathierry.hashnode.dev"
+    "blogUrl": "https://bakerathierry.hashnode.dev",
+    "ogImage": "/og.png",
+    "ogImageAlt": "Thierry Bakera. Full-stack engineer, building AI agents and the systems around them."
   }
 ]
