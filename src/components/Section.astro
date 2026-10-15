@@ -3,13 +3,19 @@ interface Props {
   id: string;
   title: string;
   description?: string;
+  /** "large": a page-level title in the text colour, with more room below (Contact). */
+  heading?: "default" | "large";
 }
 
-const { id, title, description } = Astro.props;
+const { id, title, description, heading = "default" } = Astro.props;
 const headingId = `${id}-heading`;
 ---
 
-<section id={id} aria-labelledby={headingId}>
+<section
+  id={id}
+  aria-labelledby={headingId}
+  class:list={[{ large: heading === "large" }]}
+>
   <h2 id={headingId}>{title}</h2>
   {description && <p>{description}</p>}
   <slot />
@@ -32,5 +38,16 @@ const headingId = `${id}-heading`;
   p {
     margin: 0;
     color: var(--color-muted);
+  }
+
+  .large {
+    gap: var(--space-8);
+  }
+
+  .large h2 {
+    font-size: var(--text-xl);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-title);
+    color: var(--color-fg);
   }
 </style>
