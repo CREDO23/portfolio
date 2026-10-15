@@ -11,8 +11,8 @@
   --color-accent: #0f766e;
 
   /* Type */
-  --font-sans: "Geist", system-ui, sans-serif;
-  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --font-sans: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
   --text-sm: 13px;
   --text-base: 15px;
   --text-xl: 28px;
