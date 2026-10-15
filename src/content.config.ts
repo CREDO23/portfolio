@@ -8,6 +8,21 @@ const nonEmpty = z.string().min(1);
 const link = z.url();
 // "" marks a link that is not ready yet; components hide what it would render.
 const linkOrPlaceholder = z.union([link, z.literal("")]);
+const year = z.number().int();
+
+// `end: null` means ongoing ("now").
+const period = z
+  .object({ start: year, end: year.nullable() })
+  .refine(({ start, end }) => end === null || end >= start, {
+    message: "end must be null (ongoing) or a year no earlier than start",
+    path: ["end"],
+  });
+
+const linkedItem = z.object({
+  title: nonEmpty,
+  href: link,
+  description: nonEmpty,
+});
 
 // Astro returns entries sorted by id, not in file order, so each list item
 // records its position in the file. Sort with src/content/listOrder.ts.
@@ -72,9 +87,23 @@ const intro = defineCollection({
   schema: z.object({ headline: nonEmpty }),
 });
 
+// Built from `period` so its end >= start check carries over:
+// `linkedItem.extend(period.shape)` would drop the check.
+const openSource = listCollection(
+  "src/content/json/open-source.json",
+  period.extend(linkedItem.shape),
+);
+
+const experience = listCollection(
+  "src/content/json/experience.json",
+  period.extend({ role: nonEmpty, org: nonEmpty }),
+);
+
 export const collections = {
   site,
   labels,
   sections,
   intro,
+  openSource,
+  experience,
 };
