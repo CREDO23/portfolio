@@ -4,7 +4,7 @@ Edit this file, not `CLAUDE.md` (`CLAUDE.md` is a symlink).
 
 ## Overview
 
-Personal site of Thierry Bakera, served at thierrybakera.com. One static page built with Astro 5 and TypeScript; `astro build` writes plain HTML to `dist/`. No server, no database, no client framework.
+Personal site of Thierry Bakera, served at thierrybakera.com. One static page built with Astro 7 and TypeScript; `astro build` writes plain HTML to `dist/`. No server, no database, no client framework.
 
 The design is fixed. `src/styles/tokens.css` and the `/styleguide` page are its source of truth; build with them, do not redesign.
 
