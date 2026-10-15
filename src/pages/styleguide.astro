@@ -107,6 +107,9 @@ const sample = (token: string) => ({ "--sample": `var(${token})` });
           Download
         </TextLink>
       </div>
+      <TextLink href="/" standalone>
+        Standalone, after a list
+      </TextLink>
     </Section>
 
     <Section id="button" title="Button">
@@ -144,7 +147,17 @@ const sample = (token: string) => ({ "--sample": `var(${token})` });
           role="Python Community Kage (lead)"
         />
         <Row title="Full Stack Engineer, SurfSense" meta="2025 — now" />
-        <Row title="Project name" href="/">
+        <Row title="Project name" href="/" centerAside>
+          <Pill slot="aside" size="sm">
+            In progress
+          </Pill>
+        </Row>
+        <Row
+          title="Guide name"
+          href="/"
+          description="One-line description of the guide."
+          centerAside
+        >
           <Pill slot="aside" size="sm">
             In progress
           </Pill>
