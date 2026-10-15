@@ -4,7 +4,7 @@ Personal site of Thierry Bakera, built with [Astro](https://astro.build) as a st
 
 ## Develop
 
-Requires Node.js 18.20+ (20+ recommended).
+Requires Node.js 22.12+ (see `.nvmrc`; odd-numbered versions are not supported).
 
 ```bash
 npm install

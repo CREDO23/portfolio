@@ -27,15 +27,15 @@ Applies to every new file.
 
 ## Layout
 
-| Path | Holds |
-|------|-------|
-| `src/pages/` | Routes. `index.astro` composes sections; no markup beyond that. |
-| `src/sections/` | One component per page section (Work, Experience, Labs, …). |
-| `src/components/` | The building blocks: `Section`, `List`, `Row`, `TextLink`, `Button`, `Pill`, `StatusDot`. |
-| `src/layouts/` | The single page layout: head, meta, fonts, skip link. |
-| `src/content/` | All site content as data, validated by schemas in `src/content.config.ts`. |
-| `src/styles/tokens.css` | Every design token. The only file allowed raw values. |
-| `public/` | Files served as-is: favicon, CV PDF. |
+| Path                    | Holds                                                                                     |
+| ----------------------- | ----------------------------------------------------------------------------------------- |
+| `src/pages/`            | Routes. `index.astro` composes sections; no markup beyond that.                           |
+| `src/sections/`         | One component per page section (Work, Experience, Labs, …).                               |
+| `src/components/`       | The building blocks: `Section`, `List`, `Row`, `TextLink`, `Button`, `Pill`, `StatusDot`. |
+| `src/layouts/`          | The single page layout: head, meta, fonts, skip link.                                     |
+| `src/content/`          | All site content as data, validated by schemas in `src/content.config.ts`.                |
+| `src/styles/tokens.css` | Every design token. The only file allowed raw values.                                     |
+| `public/`               | Files served as-is: favicon, CV PDF.                                                      |
 
 ## Design system
 
@@ -67,23 +67,25 @@ Applies to every new file.
 
 ```bash
 npm install
-npm run dev       # http://localhost:4321
-npm run check     # astro check (types)
-npm run build     # check + build to dist/
-npm run preview   # serve dist/
+npm run dev            # http://localhost:4321
+npm run check          # astro check (types)
+npm run format         # prettier, rewrites files
+npm run format:check   # prettier, fails on unformatted files
+npm run build          # check + build to dist/
+npm run preview        # serve dist/
 ```
 
-Package manager is **npm**. Do not add other lockfiles.
+Package manager is **npm**. Do not add other lockfiles. Node version is pinned in `.nvmrc`.
 
 ## Checks
 
 There are no unit tests: the site is static content. A change is done when:
 
-- `npm run build` passes with no warnings.
+- `npm run format:check` passes and `npm run build` passes with no warnings.
 - The page renders correctly at 390 px and 1440 px, in light and dark.
 - `/styleguide` still shows every component correctly.
 
-CI runs the build on every pull request.
+CI runs the format check and the build on every pull request and every push to `main`.
 
 ## Pull requests
 
