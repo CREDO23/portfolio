@@ -19,5 +19,10 @@
     "description": "Where I give back: mentoring other developers."
   },
   { "id": "alx", "title": "ALX Software Engineering" },
-  { "id": "contact", "title": "Get in touch", "nav": "Contact" }
+  {
+    "id": "contact",
+    "title": "Get in touch",
+    "nav": "Contact",
+    "navPill": true
+  }
 ]

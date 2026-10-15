@@ -70,6 +70,10 @@ const labels = defineCollection({
     linkedinProfile: nonEmpty,
     allPosts: nonEmpty,
     skipToContent: nonEmpty,
+    // Shown for ongoing periods: "2025 — now".
+    now: nonEmpty,
+    // Screen-reader name of the header nav.
+    mainNav: nonEmpty,
   }),
 });
 
@@ -81,6 +85,8 @@ const sections = listCollection(
     description: nonEmpty.optional(),
     // Header label; omitted when the section is not in the nav.
     nav: nonEmpty.optional(),
+    // Shows the nav entry as a Pill (Contact).
+    navPill: z.boolean().optional(),
   }),
 );
 

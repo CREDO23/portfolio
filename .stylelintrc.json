@@ -15,6 +15,10 @@
       "oklch"
     ],
     "unit-disallowed-list": ["px", "rem", "em"],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      { "ignorePseudoClasses": ["global"] }
+    ],
     "declaration-property-value-allowed-list": {
       "/^font(-family|-size|-weight)?$/": ["/^var\\(/", "inherit"],
       "/^(line-height|letter-spacing)$/": ["/^var\\(/", "inherit"]

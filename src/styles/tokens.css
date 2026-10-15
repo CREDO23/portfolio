@@ -31,6 +31,7 @@
   --space-3: 12px;
   --space-3-5: 14px;
   --space-4: 16px;
+  --space-5: 20px;
   --space-6: 24px;
   --space-14: 56px;
   --space-20: 80px;
@@ -41,6 +42,9 @@
   --border: 1px solid var(--color-line);
   --radius-pill: 999px;
   --dot-size: 7px;
+
+  /* Header grid cell of the nav: on the logo's row, between logo and Contact. */
+  --header-nav-area: 1 / 3;
 
   /* Focus */
   --focus-ring: 2px solid var(--color-accent);
@@ -54,5 +58,13 @@
     --color-muted: #9a9a9a;
     --color-line: #2a2a2a;
     --color-accent: #2dd4bf;
+  }
+}
+
+/* Below 600px, logo, nav and Contact no longer fit on one row:
+   the nav moves to its own row under the logo and Contact. */
+@media (width < 600px) {
+  :root {
+    --header-nav-area: 2 / 1 / auto / -1;
   }
 }

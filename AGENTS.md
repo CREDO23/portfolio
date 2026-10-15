@@ -41,9 +41,9 @@ Applies to every new file.
 
 - Every colour, size, space, radius and font comes from a token in `src/styles/tokens.css`. No hex, px or font names anywhere else, except font registration in `astro.config.mjs` (the Fonts API needs the family names there).
 - Dark mode is switched in `tokens.css` only (`prefers-color-scheme`). Components never branch on theme.
-- Spacing uses the scale only: 2 · 4 · 6 · 8 · 10 · 12 · 14 · 16 · 24 · 56 · 80 · 96 px.
-- Accent (teal) appears in three places only: link markers `↗`, link hover, and status dots. Highlighted words in the intro stay foreground colour, not accent.
-- Every link shows `↗` after its label and turns accent on hover. One solid button per call to action ("Email me"); everything else is outline.
+- Spacing uses the scale only: 2 · 4 · 6 · 8 · 10 · 12 · 14 · 16 · 20 · 24 · 56 · 80 · 96 px.
+- Accent (teal) appears in four places only: link markers (`↗`, `↓`), link hover, status dots, and the dot after the logo. Highlighted words in the intro stay foreground colour, not accent.
+- Links in text and rows (`TextLink`, `Row`) show `↗` after their label; nav, footer, logo, buttons and pills don't. Every link turns accent on hover, except the solid button. One solid button per call to action ("Email me"); everything else is outline.
 - Styles are scoped in the component that owns them. No Tailwind, no CSS-in-JS, no UI library.
 - `/styleguide` shows every token and component. Add a new component there in the same change.
 
