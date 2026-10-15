@@ -9,6 +9,23 @@ const link = z.url();
 // "" marks a link that is not ready yet; components hide what it would render.
 const linkOrPlaceholder = z.union([link, z.literal("")]);
 
+// Astro returns entries sorted by id, not in file order, so each list item
+// records its position in the file. Sort with src/content/listOrder.ts.
+const ordered = z.object({ order: z.number().int() });
+
+function listCollection<Item extends z.ZodType>(path: string, item: Item) {
+  return defineCollection({
+    loader: file(path, {
+      parser: (text) =>
+        (JSON.parse(text) as Record<string, unknown>[]).map((entry, order) => ({
+          ...entry,
+          order,
+        })),
+    }),
+    schema: item.and(ordered),
+  });
+}
+
 // Collections, in page order.
 
 const site = defineCollection({
@@ -39,7 +56,19 @@ const labels = defineCollection({
   }),
 });
 
+const sections = listCollection(
+  "src/content/json/sections.json",
+  z.object({
+    id: nonEmpty,
+    title: nonEmpty,
+    description: nonEmpty.optional(),
+    // Header label; omitted when the section is not in the nav.
+    nav: nonEmpty.optional(),
+  }),
+);
+
 export const collections = {
   site,
   labels,
+  sections,
 };
