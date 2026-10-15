@@ -43,6 +43,7 @@ const spaces = [
   "--space-4",
   "--space-5",
   "--space-6",
+  "--space-8",
   "--space-14",
   "--space-20",
   "--space-24",
@@ -184,11 +185,22 @@ const sample = (token: string) => ({ "--sample": `var(${token})` });
           description="Max width of the page frame, side padding included."
         />
         <Row
+          title="--contact-column-min"
+          description="Narrowest Contact column; below two of these, the groups stack."
+        />
+        <Row
           title="--header-nav-area"
           description="Where the header nav sits: beside the logo, or on its own row below 600px."
         />
       </List>
     </Section>
+
+    <Section
+      id="section-large"
+      title="Section with a large heading"
+      description="The heading=large option, used by Contact: title in the text colour, 32px between children."
+      heading="large"
+    />
   </div>
 </BaseLayout>
 

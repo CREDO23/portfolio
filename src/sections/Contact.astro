@@ -1,0 +1,82 @@
+---
+import { getCollection } from "astro:content";
+import Button from "../components/Button.astro";
+import Section from "../components/Section.astro";
+import { byFileOrder } from "../content/listOrder";
+import { getLabels, getSection, getSite } from "../content/requiredEntries";
+import type { ContactGroup } from "../content/types";
+
+const section = await getSection("contact");
+const site = await getSite();
+const labels = await getLabels();
+const groups: ContactGroup[] = (await getCollection("contact"))
+  .map((entry) => entry.data)
+  .sort(byFileOrder);
+const mailto = (subject: string) =>
+  `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
+---
+
+<Section
+  id={section.id}
+  title={section.title}
+  description={section.description}
+  heading="large"
+>
+  <div class="groups">
+    {groups.map((group) => (
+      <div class="group">
+        <h3>{group.title}</h3>
+        <p>{group.text}</p>
+        <div class="buttons">
+          <Button variant="solid" href={mailto(group.emailSubject)}>
+            {labels.emailMe}
+          </Button>
+          <Button href={group.bookingUrl}>{labels.bookCall}</Button>
+          {group.showCv && (
+            <Button href={site.cvUrl} marker="↓" download>
+              {labels.downloadCv}
+            </Button>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</Section>
+
+<style>
+  /* Side by side when two columns fit, stacked below that. */
+  .groups {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(var(--contact-column-min), 1fr)
+    );
+    gap: var(--space-6);
+  }
+
+  .group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+    border-top: var(--border);
+  }
+
+  h3 {
+    margin: 0;
+    font-size: var(--text-base);
+    font-weight: var(--weight-medium);
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-muted);
+  }
+
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-1);
+  }
+</style>

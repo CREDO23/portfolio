@@ -33,6 +33,7 @@
   --space-4: 16px;
   --space-5: 20px;
   --space-6: 24px;
+  --space-8: 32px;
   --space-14: 56px;
   --space-20: 80px;
   --space-24: 96px;
@@ -42,6 +43,7 @@
   --border: 1px solid var(--color-line);
   --radius-pill: 999px;
   --dot-size: 7px;
+  --contact-column-min: 240px;
 
   /* Header grid cell of the nav: on the logo's row, between logo and Contact. */
   --header-nav-area: 1 / 3;
