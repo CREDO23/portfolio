@@ -1,0 +1,61 @@
+---
+import { render } from "astro:content";
+import Pill from "../components/Pill.astro";
+import StatusDot from "../components/StatusDot.astro";
+import TextLink from "../components/TextLink.astro";
+import { getIntro, getLabels, getSite } from "../content/requiredEntries";
+
+const site = await getSite();
+const labels = await getLabels();
+const { Content } = await render(await getIntro());
+---
+
+<section id="top">
+  <h1>{site.description}</h1>
+  <Content />
+  <div class="actions">
+    <Pill href="#contact">
+      <StatusDot />
+      {site.availability}
+    </Pill>
+    <TextLink href={site.cvUrl} marker="↓" download>
+      {labels.downloadCv}
+    </TextLink>
+  </div>
+</section>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: var(--text-xl);
+    font-weight: var(--weight-medium);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-title);
+  }
+
+  /* The Markdown body is rendered outside this component's scope. */
+  section :global(p) {
+    margin: 0;
+    color: var(--color-muted);
+  }
+
+  /* Highlighted by colour, not weight; never accent (AGENTS.md). */
+  section :global(strong) {
+    color: var(--color-fg);
+    font-weight: var(--weight-regular);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-4);
+    margin-top: var(--space-2);
+  }
+</style>

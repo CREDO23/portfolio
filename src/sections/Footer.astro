@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import { byFileOrder } from "../content/listOrder";
+import { getSite } from "../content/requiredEntries";
+
+const site = await getSite();
+const social = (await getCollection("social"))
+  .map((entry) => entry.data)
+  .sort(byFileOrder);
+---
+
+<footer>
+  {social.map((link) => (
+    <a href={link.href}>{link.label}</a>
+  ))}
+  <span class="location">{site.location}</span>
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+    padding-top: var(--space-6);
+    border-top: var(--border);
+    color: var(--color-muted);
+  }
+
+  a,
+  .location {
+    padding: var(--space-1-5) 0;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--color-accent);
+  }
+
+  .location {
+    margin-left: auto;
+  }
+</style>

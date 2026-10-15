@@ -1,12 +1,12 @@
 ---
-import { getEntry } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-// Temporary page heading until the Intro section replaces it.
-// The layout fails the build if the site entry is missing.
-const site = await getEntry("site", "site");
+import Footer from "../sections/Footer.astro";
+import Header from "../sections/Header.astro";
+import Intro from "../sections/Intro.astro";
 ---
 
 <BaseLayout>
-  <h1>{site?.data.name}</h1>
+  <Header slot="header" />
+  <Intro />
+  <Footer slot="footer" />
 </BaseLayout>
