@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "thierrybakera",
+  // Workers runtime behaviour is fixed at this date; bump it deliberately.
+  "compatibility_date": "2026-10-15",
+  // Static site: no Worker script, only the files Astro writes to dist/.
+  "assets": {
+    "directory": "./dist",
+  },
+}
