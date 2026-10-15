@@ -112,6 +112,21 @@ const writing = listCollection(
   ]),
 );
 
+const community = listCollection(
+  "src/content/json/community.json",
+  period.extend({
+    org: nonEmpty,
+    href: link.optional(),
+    role: nonEmpty,
+    description: nonEmpty,
+  }),
+);
+
+const education = listCollection(
+  "src/content/json/education.json",
+  period.extend(linkedItem.shape),
+);
+
 export const collections = {
   site,
   labels,
@@ -121,4 +136,6 @@ export const collections = {
   experience,
   labs,
   writing,
+  community,
+  education,
 };

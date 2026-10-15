@@ -1,0 +1,19 @@
+[
+  {
+    "id": "shinobi",
+    "org": "Shinobi Open Source Academy",
+    "role": "Python Community Kage (lead)",
+    "start": 2026,
+    "end": null,
+    "description": "Lead the Python community in a mentorship group that helps developers make their first open-source contributions."
+  },
+  {
+    "id": "wiki-mentor-africa",
+    "org": "Wiki Mentor Africa",
+    "href": "https://diff.wikimedia.org/2025/06/12/reflections-from-the-wiki-mentor-africa-hackathon-insights-from-participants-and-mentors/",
+    "role": "Mentor",
+    "start": 2025,
+    "end": null,
+    "description": "Mentor African developers contributing to Wikimedia's technical projects, including at its hackathons."
+  }
+]
