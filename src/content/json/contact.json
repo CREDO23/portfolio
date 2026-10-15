@@ -1,0 +1,18 @@
+[
+  {
+    "id": "hiring",
+    "title": "Hiring or contracting",
+    "text": "Looking for a remote engineer, full-time or for a project?",
+    "emailSubject": "Role / contract enquiry",
+    "bookingUrl": "",
+    "showCv": true
+  },
+  {
+    "id": "open-source",
+    "title": "Open source & mentoring",
+    "text": "Want to collaborate on an open-source project, or need guidance?",
+    "emailSubject": "Open source / mentoring",
+    "bookingUrl": "",
+    "showCv": false
+  }
+]

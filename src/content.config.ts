@@ -127,6 +127,23 @@ const education = listCollection(
   period.extend(linkedItem.shape),
 );
 
+// The component builds the mailto: link from site.email and emailSubject.
+const contact = listCollection(
+  "src/content/json/contact.json",
+  z.object({
+    title: nonEmpty,
+    text: nonEmpty,
+    emailSubject: nonEmpty,
+    bookingUrl: linkOrPlaceholder,
+    showCv: z.boolean(),
+  }),
+);
+
+const social = listCollection(
+  "src/content/json/social.json",
+  z.object({ label: nonEmpty, href: link }),
+);
+
 export const collections = {
   site,
   labels,
@@ -138,4 +155,6 @@ export const collections = {
   writing,
   community,
   education,
+  contact,
+  social,
 };
