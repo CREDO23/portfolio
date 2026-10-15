@@ -7,4 +7,6 @@
   "assets": {
     "directory": "./dist",
   },
+  // Branch builds run `wrangler preview`, which requires this block; empty because previews need no settings of their own.
+  "previews": {},
 }
