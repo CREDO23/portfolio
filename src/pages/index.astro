@@ -1,16 +1,12 @@
 ---
-const title = "Thierry Bakera";
+import { getEntry } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// Temporary page heading until the Intro section replaces it.
+// The layout fails the build if the site entry is missing.
+const site = await getEntry("site", "site");
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title}</title>
-  </head>
-  <body>
-    <h1>{title}</h1>
-    <p>New site in progress.</p>
-  </body>
-</html>
+<BaseLayout>
+  <h1>{site?.data.name}</h1>
+</BaseLayout>
