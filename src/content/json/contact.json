@@ -4,7 +4,7 @@
     "title": "Hiring or contracting",
     "text": "Looking for a remote engineer, full-time or for a project?",
     "emailSubject": "Role / contract enquiry",
-    "bookingUrl": "",
+    "bookingUrl": "https://cal.com/thierry-bakera/role-or-contract-call",
     "showCv": true
   },
   {
@@ -12,7 +12,7 @@
     "title": "Open source & mentoring",
     "text": "Want to collaborate on an open-source project, or need guidance?",
     "emailSubject": "Open source / mentoring",
-    "bookingUrl": "",
+    "bookingUrl": "https://cal.com/thierry-bakera/open-source-mentoring-call",
     "showCv": false
   }
 ]
