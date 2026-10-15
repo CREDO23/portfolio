@@ -1,0 +1,36 @@
+---
+import { getCollection } from "astro:content";
+import List from "../components/List.astro";
+import Row from "../components/Row.astro";
+import Section from "../components/Section.astro";
+import TextLink from "../components/TextLink.astro";
+import { formatPeriod } from "../content/formatPeriod";
+import { byNewest } from "../content/listOrder";
+import { getLabels, getSection, getSite } from "../content/requiredEntries";
+import type { ExperienceItem } from "../content/types";
+
+const section = await getSection("experience");
+const site = await getSite();
+const labels = await getLabels();
+const items: ExperienceItem[] = (await getCollection("experience"))
+  .map((entry) => entry.data)
+  .sort(byNewest);
+---
+
+<Section
+  id={section.id}
+  title={section.title}
+  description={section.description}
+>
+  <List>
+    {items.map((item) => (
+      <Row
+        title={`${item.role}, ${item.org}`}
+        meta={formatPeriod(item, labels.now)}
+      />
+    ))}
+  </List>
+  <TextLink href={site.linkedinUrl} standalone>
+    {labels.linkedinProfile}
+  </TextLink>
+</Section>

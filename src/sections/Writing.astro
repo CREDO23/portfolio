@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import List from "../components/List.astro";
+import Pill from "../components/Pill.astro";
+import Row from "../components/Row.astro";
+import Section from "../components/Section.astro";
+import TextLink from "../components/TextLink.astro";
+import { byFileOrder } from "../content/listOrder";
+import { getLabels, getSection, getSite } from "../content/requiredEntries";
+import type { GuideItem, PostItem } from "../content/types";
+
+const section = await getSection("writing");
+const site = await getSite();
+const labels = await getLabels();
+const items: (GuideItem | PostItem)[] = (await getCollection("writing"))
+  .map((entry) => entry.data)
+  .sort(byFileOrder);
+---
+
+<Section
+  id={section.id}
+  title={section.title}
+  description={section.description}
+>
+  <List>
+    {items.map((item) =>
+      item.kind === "guide" ? (
+        <Row
+          title={item.title}
+          href={item.href}
+          description={item.description}
+          centerAside
+        >
+          <Pill slot="aside" size="sm">
+            {item.status}
+          </Pill>
+        </Row>
+      ) : (
+        <Row title={item.title} href={item.href} meta={String(item.year)} />
+      ),
+    )}
+  </List>
+  <TextLink href={site.blogUrl} standalone>
+    {labels.allPosts}
+  </TextLink>
+</Section>

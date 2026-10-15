@@ -1,12 +1,24 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Community from "../sections/Community.astro";
+import Education from "../sections/Education.astro";
+import Experience from "../sections/Experience.astro";
 import Footer from "../sections/Footer.astro";
 import Header from "../sections/Header.astro";
 import Intro from "../sections/Intro.astro";
+import Labs from "../sections/Labs.astro";
+import OpenSourceWork from "../sections/OpenSourceWork.astro";
+import Writing from "../sections/Writing.astro";
 ---
 
 <BaseLayout>
   <Header slot="header" />
   <Intro />
+  <OpenSourceWork />
+  <Experience />
+  <Labs />
+  <Writing />
+  <Community />
+  <Education />
   <Footer slot="footer" />
 </BaseLayout>

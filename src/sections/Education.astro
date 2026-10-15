@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import List from "../components/List.astro";
+import Row from "../components/Row.astro";
+import Section from "../components/Section.astro";
+import { formatPeriod } from "../content/formatPeriod";
+import { byNewest } from "../content/listOrder";
+import { getLabels, getSection } from "../content/requiredEntries";
+import type { EducationItem } from "../content/types";
+
+const section = await getSection("alx");
+const labels = await getLabels();
+const items: EducationItem[] = (await getCollection("education"))
+  .map((entry) => entry.data)
+  .sort(byNewest);
+---
+
+<Section
+  id={section.id}
+  title={section.title}
+  description={section.description}
+>
+  <List>
+    {items.map((item) => (
+      <Row
+        title={item.title}
+        href={item.href}
+        meta={formatPeriod(item, labels.now)}
+        description={item.description}
+      />
+    ))}
+  </List>
+</Section>
