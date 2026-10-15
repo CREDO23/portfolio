@@ -1,0 +1,16 @@
+[
+  {
+    "id": "ai-lab",
+    "title": "ai-lab",
+    "href": "https://github.com/CREDO23/ai-lab",
+    "stack": "TypeScript · AI SDK",
+    "description": "Seven stages from a naive AI agent to an evaluated workflow: tracing, LLM-as-a-judge evals, task decomposition, and an evaluator that says what's still missing."
+  },
+  {
+    "id": "nestjs-lab",
+    "title": "nestjs-lab",
+    "href": "https://github.com/CREDO23/nestjs-lab",
+    "stack": "TypeScript · NestJS",
+    "description": "Isolated NestJS experiments, one pattern each: circuit breaker, configurable modules, lazy-loaded modules, worker threads."
+  }
+]

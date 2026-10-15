@@ -1,0 +1,23 @@
+[
+  { "id": "work", "title": "Open-source work", "nav": "Work" },
+  { "id": "experience", "title": "Experience", "nav": "Experience" },
+  {
+    "id": "labs",
+    "title": "Labs",
+    "description": "Where I learn in public: small, focused experiments, one concept at a time.",
+    "nav": "Labs"
+  },
+  {
+    "id": "writing",
+    "title": "Writing & guides",
+    "description": "What I learn, written down for others: tutorials, explainers and a growing guide.",
+    "nav": "Writing"
+  },
+  {
+    "id": "community",
+    "title": "Community",
+    "description": "Where I give back: mentoring other developers."
+  },
+  { "id": "alx", "title": "ALX Software Engineering" },
+  { "id": "contact", "title": "Get in touch", "nav": "Contact" }
+]

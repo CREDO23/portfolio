@@ -1,0 +1,44 @@
+[
+  {
+    "id": "surfsense",
+    "role": "Full Stack Engineer",
+    "org": "SurfSense",
+    "start": 2025,
+    "end": null
+  },
+  {
+    "id": "ever-technologies",
+    "role": "Full Stack Web Developer",
+    "org": "Ever Technologies",
+    "start": 2024,
+    "end": 2025
+  },
+  {
+    "id": "wikimedia",
+    "role": "Open Source Developer",
+    "org": "Wikimedia Foundation",
+    "start": 2024,
+    "end": 2025
+  },
+  {
+    "id": "kadea-assistant-coach",
+    "role": "Assistant Coach",
+    "org": "KADEA (Kinshasa Digital Academy)",
+    "start": 2023,
+    "end": 2025
+  },
+  {
+    "id": "mozilla",
+    "role": "Open Source Developer",
+    "org": "Mozilla",
+    "start": 2023,
+    "end": 2023
+  },
+  {
+    "id": "kadea-web-developer",
+    "role": "Web Developer",
+    "org": "KADEA (Kinshasa Digital Academy)",
+    "start": 2022,
+    "end": 2025
+  }
+]
