@@ -33,7 +33,7 @@ Applies to every new file.
 | `src/sections/`         | One component per page section (Work, Experience, Labs, …).                               |
 | `src/components/`       | The building blocks: `Section`, `List`, `Row`, `TextLink`, `Button`, `Pill`, `StatusDot`. |
 | `src/layouts/`          | The single page layout: head, meta, fonts, skip link.                                     |
-| `src/content/`          | All site content as data, validated by schemas in `src/content.config.ts`.                |
+| `src/content/`          | Data in `json/` and `markdown/`, schemas in `src/content.config.ts`, code at its root.    |
 | `src/styles/tokens.css` | Every design token. The only file allowed raw values.                                     |
 | `public/`               | Files served as-is: favicon, CV PDF.                                                      |
 
