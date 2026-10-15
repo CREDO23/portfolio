@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    text { fill: #111111; }
+    circle { fill: #0f766e; }
+    @media (prefers-color-scheme: dark) {
+      text { fill: #ededed; }
+      circle { fill: #2dd4bf; }
+    }
+  </style>
+  <text x="5" y="25" font-family="system-ui, sans-serif" font-size="26" font-weight="600">T</text>
+  <circle cx="25" cy="23" r="3" />
+</svg>
