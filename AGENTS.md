@@ -45,7 +45,6 @@ Applies to every new file.
 - Accent (teal) appears in three places only: link markers `↗`, link hover, and status dots. Highlighted words in the intro stay foreground colour, not accent.
 - Every link shows `↗` after its label and turns accent on hover. One solid button per call to action ("Email me"); everything else is outline.
 - Styles are scoped in the component that owns them. No Tailwind, no CSS-in-JS, no UI library.
-- No motion. Hover changes colour instantly.
 - `/styleguide` shows every token and component. Add a new component there in the same change.
 
 ## Content
