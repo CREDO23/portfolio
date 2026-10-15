@@ -1,0 +1,94 @@
+---
+interface Props {
+  title: string;
+  href?: string;
+  role?: string;
+  meta?: string;
+  description?: string;
+}
+
+const { title, href, role, meta, description } = Astro.props;
+// Linked and plain Rows share one markup; only the wrapping element changes.
+const Content = href ? "a" : "div";
+---
+
+<li>
+  <Content
+    class:list={["content", { "has-description": description }]}
+    href={href}
+  >
+    <div class="line">
+      {/* Astro drops whitespace between tags, so each separator space is in the string. */}
+      <span>
+        <span class="title">{title}</span>
+        {href && (
+          <span class="marker" aria-hidden="true">
+            {" ↗"}
+          </span>
+        )}
+        {role && <span class="role">{` · ${role}`}</span>}
+      </span>
+      {Astro.slots.has("aside") ? (
+        <slot name="aside" />
+      ) : (
+        meta && <span class="meta">{meta}</span>
+      )}
+    </div>
+    {description && <p class="description">{description}</p>}
+  </Content>
+</li>
+
+<style>
+  li {
+    border-top: var(--border);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-3) 0;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .has-description {
+    padding: var(--space-4) 0;
+  }
+
+  .line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-1) var(--space-4);
+  }
+
+  .title {
+    font-weight: var(--weight-regular);
+  }
+
+  .has-description .title {
+    font-weight: var(--weight-medium);
+  }
+
+  a.content:hover .title,
+  .marker {
+    color: var(--color-accent);
+  }
+
+  .role,
+  .description {
+    color: var(--color-muted);
+  }
+
+  .meta {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+
+  .description {
+    margin: 0;
+  }
+</style>

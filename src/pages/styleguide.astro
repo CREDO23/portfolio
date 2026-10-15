@@ -1,0 +1,253 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import List from "../components/List.astro";
+import Pill from "../components/Pill.astro";
+import Row from "../components/Row.astro";
+import Section from "../components/Section.astro";
+import StatusDot from "../components/StatusDot.astro";
+import TextLink from "../components/TextLink.astro";
+
+// Demo text stays in this page, not src/content/: it is not site content.
+
+const colours = [
+  "--color-bg",
+  "--color-fg",
+  "--color-muted",
+  "--color-line",
+  "--color-accent",
+];
+
+// `property` picks the CSS property the sample applies its token to.
+const typeSamples = [
+  { token: "--font-sans", property: "family" },
+  { token: "--font-mono", property: "family" },
+  { token: "--text-sm", property: "size" },
+  { token: "--text-base", property: "size" },
+  { token: "--text-xl", property: "size" },
+  { token: "--weight-regular", property: "weight" },
+  { token: "--weight-medium", property: "weight" },
+  { token: "--leading-tight", property: "leading" },
+  { token: "--leading-normal", property: "leading" },
+  { token: "--tracking-title", property: "tracking" },
+];
+
+const spaces = [
+  "--space-0-5",
+  "--space-1",
+  "--space-1-5",
+  "--space-2",
+  "--space-2-5",
+  "--space-3",
+  "--space-3-5",
+  "--space-4",
+  "--space-6",
+  "--space-14",
+  "--space-20",
+  "--space-24",
+];
+
+// Samples read their token through --sample, so they follow the theme.
+const sample = (token: string) => ({ "--sample": `var(${token})` });
+---
+
+<BaseLayout noindex>
+  <div class="groups">
+    <h1>Styleguide</h1>
+
+    <Section id="colour" title="Colour">
+      <List>
+        {colours.map((token) => (
+          <Row title={token}>
+            <span slot="aside" class="swatch" style={sample(token)} />
+          </Row>
+        ))}
+      </List>
+    </Section>
+
+    <Section id="type" title="Type">
+      <List>
+        {typeSamples.map(({ token, property }) => (
+          <Row title={token}>
+            <span slot="aside" class={property} style={sample(token)}>
+              {property === "leading" ? (
+                <>
+                  Two lines
+                  <br />
+                  of text
+                </>
+              ) : (
+                "Sample text"
+              )}
+            </span>
+          </Row>
+        ))}
+      </List>
+    </Section>
+
+    <Section id="space" title="Space">
+      <List>
+        {spaces.map((token) => (
+          <Row title={token}>
+            <span slot="aside" class="bar" style={sample(token)} />
+          </Row>
+        ))}
+      </List>
+    </Section>
+
+    <Section
+      id="text-link"
+      title="TextLink"
+      description="An empty href renders nothing."
+    >
+      <div class="samples">
+        <TextLink href="/">Text link</TextLink>
+        <TextLink href="/favicon.svg" marker="↓" download>
+          Download
+        </TextLink>
+      </div>
+    </Section>
+
+    <Section id="button" title="Button">
+      <div class="samples">
+        <Button href="/" variant="solid">
+          Email me
+        </Button>
+        <Button href="/">Outline</Button>
+        <Button href="/favicon.svg" marker="↓" download>
+          Download
+        </Button>
+      </div>
+    </Section>
+
+    <Section id="pill" title="Pill and StatusDot">
+      <div class="samples">
+        <Pill href="/">
+          <StatusDot />
+          Open to full-time roles and contracts
+        </Pill>
+        <Pill size="sm">In progress</Pill>
+      </div>
+    </Section>
+
+    <Section id="list" title="List and Row">
+      <List>
+        <Row
+          title="SurfSense"
+          href="/"
+          meta="2025 — now"
+          description="One-line description of the project."
+        />
+        <Row
+          title="Shinobi Open Source Academy"
+          role="Python Community Kage (lead)"
+        />
+        <Row title="Full Stack Engineer, SurfSense" meta="2025 — now" />
+        <Row title="Project name" href="/">
+          <Pill slot="aside" size="sm">
+            In progress
+          </Pill>
+        </Row>
+      </List>
+    </Section>
+
+    <Section id="shape" title="Shape">
+      <List>
+        <Row title="--radius-pill">
+          <span slot="aside" class="radius"></span>
+        </Row>
+        <Row title="--dot-size">
+          <StatusDot slot="aside" />
+        </Row>
+        <Row title="--border">
+          <span slot="aside" class="rule"></span>
+        </Row>
+        <Row title="--focus-ring, --focus-offset">
+          <span slot="aside" class="focus"></span>
+        </Row>
+        <Row
+          title="--content-width"
+          description="Max width of the page frame, side padding included."
+        />
+      </List>
+    </Section>
+  </div>
+</BaseLayout>
+
+<style>
+  .groups {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-14);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: var(--text-xl);
+    font-weight: var(--weight-medium);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-title);
+  }
+
+  .samples {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-4);
+  }
+
+  .swatch {
+    width: var(--space-6);
+    height: var(--space-6);
+    border: var(--border);
+    background: var(--sample);
+  }
+
+  .family {
+    font-family: var(--sample);
+  }
+
+  .size {
+    font-size: var(--sample);
+  }
+
+  .weight {
+    font-weight: var(--sample);
+  }
+
+  .leading {
+    line-height: var(--sample);
+  }
+
+  /* Shown at the title size, where tracking is visible. */
+  .tracking {
+    font-size: var(--text-xl);
+    letter-spacing: var(--sample);
+  }
+
+  .bar {
+    width: var(--sample);
+    height: var(--space-2);
+    background: var(--color-fg);
+  }
+
+  .radius {
+    width: var(--space-14);
+    height: var(--space-6);
+    border: var(--border);
+    border-radius: var(--radius-pill);
+  }
+
+  .rule {
+    width: var(--space-14);
+    border-top: var(--border);
+  }
+
+  .focus {
+    width: var(--space-6);
+    height: var(--space-6);
+    border: var(--border);
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-offset);
+  }
+</style>

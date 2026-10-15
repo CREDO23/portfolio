@@ -1,0 +1,32 @@
+---
+interface Props {
+  href: string;
+  /** "↓" marks a download. */
+  marker?: "↗" | "↓";
+  download?: boolean;
+}
+
+const { href, marker = "↗", download = false } = Astro.props;
+---
+
+{href && (
+  <a href={href} download={download}>
+    <slot />
+    {/* Astro drops whitespace between tags, so the separator space is in the string. */}
+    <span class="marker" aria-hidden="true">
+      {` ${marker}`}
+    </span>
+  </a>
+)}
+
+<style>
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a:hover,
+  .marker {
+    color: var(--color-accent);
+  }
+</style>

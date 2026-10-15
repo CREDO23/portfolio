@@ -4,6 +4,12 @@ import { getEntry } from "astro:content";
 import "../styles/tokens.css";
 import "../styles/base.css";
 
+interface Props {
+  /** Keeps the page out of search results, e.g. the styleguide. */
+  noindex?: boolean;
+}
+
+const { noindex = false } = Astro.props;
 const site = await getEntry("site", "site");
 if (!site) {
   throw new Error(
@@ -20,6 +26,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{name}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="website" />

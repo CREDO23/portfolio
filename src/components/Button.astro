@@ -1,0 +1,50 @@
+---
+// A link styled as a button: navigation is never a <button>.
+interface Props {
+  href: string;
+  variant?: "solid" | "outline";
+  marker?: "↓";
+  download?: boolean;
+}
+
+const { href, variant = "outline", marker, download = false } = Astro.props;
+---
+
+{href && (
+  <a class:list={["button", variant]} href={href} download={download}>
+    <slot />
+    {marker && (
+      <span class="marker" aria-hidden="true">
+        {marker}
+      </span>
+    )}
+  </a>
+)}
+
+<style>
+  .button {
+    display: inline-flex;
+    gap: var(--space-1-5);
+    padding: var(--space-2) var(--space-4);
+    border: var(--border);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-sm);
+    text-decoration: none;
+  }
+
+  /* Keeps the border width from --border; only its colour changes. */
+  .solid {
+    border-color: var(--color-fg);
+    background: var(--color-fg);
+    color: var(--color-bg);
+    font-weight: var(--weight-medium);
+  }
+
+  .outline {
+    color: inherit;
+  }
+
+  .marker {
+    color: var(--color-accent);
+  }
+</style>

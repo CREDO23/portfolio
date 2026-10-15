@@ -1,0 +1,17 @@
+---
+// Decorative: the Pill text around it carries the meaning.
+interface Props {}
+---
+
+<span aria-hidden="true"></span>
+
+<style>
+  /* inline-block so the size applies outside a flex Pill too. */
+  span {
+    display: inline-block;
+    width: var(--dot-size);
+    height: var(--dot-size);
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+</style>

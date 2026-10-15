@@ -13,7 +13,7 @@
   /* Type */
   --font-sans: var(--font-geist);
   --font-mono: var(--font-geist-mono);
-  --text-sm: 13px;
+  --text-sm: 14px;
   --text-base: 15px;
   --text-xl: 28px;
   --weight-regular: 400;
@@ -25,8 +25,11 @@
   /* Space: the only spacing values allowed */
   --space-0-5: 2px;
   --space-1: 4px;
+  --space-1-5: 6px;
   --space-2: 8px;
+  --space-2-5: 10px;
   --space-3: 12px;
+  --space-3-5: 14px;
   --space-4: 16px;
   --space-6: 24px;
   --space-14: 56px;
