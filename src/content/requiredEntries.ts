@@ -1,7 +1,7 @@
 import { getEntry } from "astro:content";
 
-// The one-entry collections. A missing entry fails the build with a clear
-// message instead of rendering an empty page.
+// Entries the page cannot render without. A missing one fails the build with
+// a clear message instead of rendering an empty page.
 
 function missing(id: string, path: string): never {
   throw new Error(`Missing content: add an entry with id "${id}" to ${path}.`);
@@ -21,4 +21,10 @@ export async function getLabels() {
 export async function getIntro() {
   const entry = await getEntry("intro", "intro");
   return entry ?? missing("intro", "src/content/markdown/intro.md");
+}
+
+/** A page section's title and description, by its id in sections.json. */
+export async function getSection(id: string) {
+  const entry = await getEntry("sections", id);
+  return entry?.data ?? missing(id, "src/content/json/sections.json");
 }
