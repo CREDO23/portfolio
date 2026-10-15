@@ -70,6 +70,7 @@ npm run dev            # http://localhost:4321
 npm run check          # astro check (types)
 npm run format         # prettier, rewrites files
 npm run format:check   # prettier, fails on unformatted files
+npm run lint:css       # stylelint, fails on raw values outside tokens.css
 npm run build          # check + build to dist/
 npm run preview        # serve dist/
 ```
@@ -80,11 +81,11 @@ Package manager is **npm**. Do not add other lockfiles. Node version is pinned i
 
 There are no unit tests: the site is static content. A change is done when:
 
-- `npm run format:check` passes and `npm run build` passes with no warnings.
+- `npm run format:check`, `npm run lint:css` and `npm run build` pass with no warnings.
 - The page renders correctly at 390 px and 1440 px, in light and dark.
 - `/styleguide` still shows every component correctly.
 
-CI runs the format check and the build on every pull request and every push to `main`.
+CI runs the format check, the CSS lint and the build on every pull request and every push to `main`.
 
 ## Pull requests
 
