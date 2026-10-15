@@ -99,6 +99,19 @@ const experience = listCollection(
   period.extend({ role: nonEmpty, org: nonEmpty }),
 );
 
+const labs = listCollection(
+  "src/content/json/labs.json",
+  linkedItem.extend({ stack: nonEmpty }),
+);
+
+const writing = listCollection(
+  "src/content/json/writing.json",
+  z.discriminatedUnion("kind", [
+    linkedItem.extend({ kind: z.literal("guide"), status: nonEmpty }),
+    z.object({ kind: z.literal("post"), title: nonEmpty, href: link, year }),
+  ]),
+);
+
 export const collections = {
   site,
   labels,
@@ -106,4 +119,6 @@ export const collections = {
   intro,
   openSource,
   experience,
+  labs,
+  writing,
 };

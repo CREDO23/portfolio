@@ -1,0 +1,38 @@
+[
+  {
+    "id": "js-oop-guide",
+    "kind": "guide",
+    "title": "JS OOP hands-on guide",
+    "href": "https://github.com/CREDO23/JS-OOP-handsOn-guide",
+    "status": "In progress",
+    "description": "Runnable, commented lessons on object-oriented programming in JavaScript. 3 of 14 topics done."
+  },
+  {
+    "id": "finanztrack",
+    "kind": "post",
+    "title": "How I designed FinanzTrack",
+    "href": "https://bakerathierry.hashnode.dev/how-i-designed-finanztrack-alx-se",
+    "year": 2023
+  },
+  {
+    "id": "google-enter",
+    "kind": "post",
+    "title": "What happens when you type google.com and press Enter",
+    "href": "https://bakerathierry.hashnode.dev/what-happens-when-you-type-httpswwwgooglecom-in-your-browser-and-press-enter",
+    "year": 2023
+  },
+  {
+    "id": "react-series",
+    "kind": "post",
+    "title": "Build modern web applications with React (3-part series)",
+    "href": "https://bakerathierry.hashnode.dev/build-modern-web-applications-using-reactjs-1",
+    "year": 2023
+  },
+  {
+    "id": "ssl-tls",
+    "kind": "post",
+    "title": "Understanding SSL/TLS",
+    "href": "https://bakerathierry.hashnode.dev/understanding-ssltls-the-key-to-secure-online-communication",
+    "year": 2023
+  }
+]
