@@ -44,6 +44,11 @@ const { href, variant = "outline", marker, download = false } = Astro.props;
     color: inherit;
   }
 
+  /* Outline only: accent text on the solid fill reads poorly. */
+  .outline:hover {
+    color: var(--color-accent);
+  }
+
   .marker {
     color: var(--color-accent);
   }
