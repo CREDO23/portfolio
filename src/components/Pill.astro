@@ -1,0 +1,37 @@
+---
+interface Props {
+  href?: string;
+  /** "md" for a status line, "sm" for a tag. */
+  size?: "sm" | "md";
+}
+
+const { href, size = "md" } = Astro.props;
+const Tag = href ? "a" : "span";
+---
+
+<Tag class:list={["pill", size]} href={href}>
+  <slot />
+</Tag>
+
+<style>
+  /* Centred so a StatusDot lines up with the text. */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    border: var(--border);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-sm);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .md {
+    padding: var(--space-2) var(--space-4);
+  }
+
+  .sm {
+    padding: var(--space-0-5) var(--space-3);
+    color: var(--color-muted);
+  }
+</style>
