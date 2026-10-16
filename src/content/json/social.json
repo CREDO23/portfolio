@@ -2,7 +2,7 @@
   {
     "id": "email",
     "label": "Email",
-    "href": "mailto:thierry@thierrybakera.com"
+    "siteEmail": true
   },
   { "id": "github", "label": "GitHub", "href": "https://github.com/CREDO23" },
   {
