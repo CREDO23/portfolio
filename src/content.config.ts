@@ -159,9 +159,16 @@ const contact = listCollection(
   }),
 );
 
+// The Email entry takes its address from site.email, so it is set in one place.
 const social = listCollection(
   "src/content/json/social.json",
-  z.object({ label: nonEmpty, href: link }),
+  z.union(
+    [
+      z.object({ label: nonEmpty, href: link }),
+      z.object({ label: nonEmpty, siteEmail: z.literal(true) }),
+    ],
+    { error: 'needs an href, or "siteEmail": true for the Email link' },
+  ),
 );
 
 export const collections = {

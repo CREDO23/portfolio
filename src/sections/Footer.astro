@@ -11,7 +11,9 @@ const social = (await getCollection("social"))
 
 <footer>
   {social.map((link) => (
-    <a href={link.href}>{link.label}</a>
+    <a href={"href" in link ? link.href : `mailto:${site.email}`}>
+      {link.label}
+    </a>
   ))}
   <span class="location">{site.location}</span>
 </footer>

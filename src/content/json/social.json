@@ -1,5 +1,9 @@
 [
-  { "id": "email", "label": "Email", "href": "mailto:bakerathierry@gmail.com" },
+  {
+    "id": "email",
+    "label": "Email",
+    "siteEmail": true
+  },
   { "id": "github", "label": "GitHub", "href": "https://github.com/CREDO23" },
   {
     "id": "linkedin",
