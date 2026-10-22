@@ -18,10 +18,10 @@
   "dependencies": {
     "@fontsource-variable/geist": "5.3.0",
     "@fontsource-variable/geist-mono": "5.3.0",
-    "astro": "^7.3.8"
+    "astro": "^7.4.1"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10",
+    "@astrojs/check": "^0.9.11",
     "postcss-html": "2.0.0",
     "prettier": "3.9.10",
     "prettier-plugin-astro": "1.1.1",
@@ -29,6 +29,6 @@
     "stylelint-config-html": "2.0.0",
     "stylelint-config-standard": "40.0.0",
     "typescript": "^6.0.3",
-    "wrangler": "^4.151.0"
+    "wrangler": "^4.151.2"
   }
 }
